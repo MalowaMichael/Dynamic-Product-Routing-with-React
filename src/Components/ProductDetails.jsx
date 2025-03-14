@@ -1,6 +1,7 @@
 import React from 'react'
 
 const ProductDetails = ({product}) => {
+
   return (
     <div className='flex items-center justify-between w-[90%] m-auto p-2 mt-[2%]   '>
         <img src= {product.image} alt="name" 
@@ -14,10 +15,12 @@ const ProductDetails = ({product}) => {
         </div>
         
         <h3 className='text-lg my-4 text-gray-600 font-medium text-wrap'>{product.name}</h3>
+        <p className='text-red-500 font-medium'>The category is: {product.category}</p>
 
         <div className='flex items-center justify-between gap-[15%] py-1 w-[35%]'>
           <div className='text-lg font-medium text-gray-500 line-through'>KES {product.price_old}</div>
-          <div className='text-lg font-medium text-gray-500 '>KES {product.price_new}</div>
+          <div className='text-lg font-medium text-black '>KES {product.price_new}</div>
+
         </div>
 
         <div className='flex items-center justify-between gap-[3%] cursor-default w-[50%] text-lg text-gray-600 hover:border-1px hover:border-gray-300 '>

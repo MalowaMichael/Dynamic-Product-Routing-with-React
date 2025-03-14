@@ -1,8 +1,8 @@
 import { faker } from '@faker-js/faker';
 
 
-const categories = ["Health", "Garden", "Electronics", "Shoes"];
-const itemPerCategory = 8;
+const categories = ["Men", "Women", "Kids", "Clothes", "Sports", "Beauty", "Health", "Garden", "Electronics", "Shoes",];
+const itemPerCategory = 5;
 
 const generateProducts = () => {
   const products = [];
@@ -28,13 +28,31 @@ const loadProducts = () => {
   const savedProducts = localStorage.getItem("products")
 
   if (savedProducts) {
-    return JSON.parse(savedProducts)
+    const parsedProducts = JSON.parse(savedProducts);
+    const savedCategories = new Set(parsedProducts.map((product) => product.category))
+     
+    //now all added categories
+    const allCategoriesExist = categories.every(cat => savedCategories.has(cat));
+
+    if (allCategoriesExist) {
+      //console.log("Loaded products from local storage: ", parsedProducts)
+      return parsedProducts;
+    }else{
+      console.log("Some categories are missing, regenerating products...");
+
+    }
+    
   }else{
-    const newProducts = generateProducts(20)
-    localStorage.setItem("products", JSON.stringify(newProducts))
-    return newProducts;
+    console.log("No products found in localStorage, generating new ones...");
+
   }
+
+    const newProducts = generateProducts()
+    localStorage.setItem("products", JSON.stringify(newProducts))
+    console.log("✅ New products saved to localStorage:", newProducts);
+
+    return newProducts;
 }
-const product_data = loadProducts()
+const product_data = loadProducts() || []
 //console.log("generated prods: ", product_data)
 export default product_data

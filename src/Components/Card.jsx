@@ -14,6 +14,7 @@ const Card = ({image, name, price_old, price_new}) => {
       <div className='flex mb-3 items-start gap-[20%] text-xl text-gray-700'>
         <div className='line-through line-red-700'>KES {price_new}</div>
         <div className=''>KES {price_old}</div>
+
       </div>
 
       <Button/>
