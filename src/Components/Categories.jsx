@@ -45,7 +45,7 @@ const categoryItems = product_data.filter((categItem) => categItem.category === 
   return (
     <div className='overflow-y-hidden'>
          
-         <div className='flex flex-wrap items-center justify-between gap-[1%] w-[98%] m-auto'>
+         <div className='grid bg-white grid-cols-2 md:flex md:flex-wrap md:items-center md:justify-start md:gap-[1%] md:py-2 md:w-full md:h-full mt-[1%] m-auto '>
                 {categoryItems.map((product) =>{
                  return <Link      
                     key={product.id} 

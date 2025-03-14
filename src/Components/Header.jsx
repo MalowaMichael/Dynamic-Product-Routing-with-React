@@ -15,37 +15,45 @@ const Header = () => {
 const arrayCategory = categories.map((category, index) => {
   return <NavLink to={`/categories?category=${category}`}>
     <h3 key={index} 
-    
-    className={({isActive}) =>{
-      `text-2xl text-center cursor-pointer hover:text-white hover:transition-all hover:duration-300 hover:ease-in-out 
-      ${isActive} ? "text-[yellow] underline " : "text-gray-600 font-medium"`
-    }}
+        className={({isActive}) =>
+        isActive
+        ?
+        "text-[yellow] underline"
+        : 'relative cursor-pointer after:content-[""] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-[-5px] after:bg-[yellow] hover:text-[yellow] hover:after:w-full hover:after:transition-all hover:after:duration-300 hover:after:ease-in-out'
+        }     
   >{category}</h3>
   </NavLink>
 
 }) 
 
   return (
-    <div className='flex px-auto p-5  w-full items-center justify-between top-[0] sticky bg-[green] text-white text-2xl'>
+    <div className=' md:flex w-[100%] m-auto px-auto top-[0] sticky bg-[green] text-white text-sm px-1 md:text-2xl'>
       <div className=''>
         <p className='cursor-default'>Product | Routes</p>
       </div>
 
       <div id = "middle-section">
-          <input type="text" placeholder='Search here...' className='bg-white text-gray-500 w-full p-1 border-[1.5px] border-[greenyellow] rounded-md hover:border-blue-500 focus:border-[none] focus:outline focus:outline-yellow-700 text-[18px]  '/>
+          <input type="text" placeholder='Search here...' className='bg-white text-gray-500 w-full border-[1px] border-[greenyellow] px-2 my-1 rounded-full md:px-1 md:rounded-md hover:border-blue-500 focus:border-[none] focus:outline focus:outline-yellow-700  '/>
       </div>
 
       <div className='bg-transparent w-1/4'>
-        <ul className='flex items-center justify-between gap-[15%] p-2'>
+        <ul className='hidden md:flex md:items-center md:justify-between md:gap-[15%] p-2'>
           {tabs.map((tab, index) =>{
             return <li key={index} >
-            <Link to={paths[index]}            
+            <NavLink to={paths[index]}            
                 key={index}
-                className='relative cursor-pointer after:content-[""] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-[-5px] after:bg-[yellow] hover:text-[yellow] hover:after:w-full hover:after:transition-all hover:after:duration-300 hover:after:ease-in-out   '
+                //className='relative cursor-pointer after:content-[""] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-[-5px] after:bg-[yellow] hover:text-[yellow] hover:after:w-full hover:after:transition-all hover:after:duration-300 hover:after:ease-in-out   '
+                
+                className={({isActive}) =>
+                  isActive
+                  ?
+                  "text-[yellow] underline"
+                  : 'relative cursor-pointer after:content-[""] after:absolute after:w-0 after:h-[2px] after:left-0 after:bottom-[-5px] after:bg-[yellow] hover:text-[yellow] hover:after:w-full hover:after:transition-all hover:after:duration-300 hover:after:ease-in-out'
+              } 
                 onClick={() => setIsCategory(tab)}
             >{tab}
                       
-            </Link>
+            </NavLink>
             {tab === "Categories" && isCategory === "Categories" && (
                     <div className='flex absolute top-full left-0 p-4 items-center justify-between bg-green-400 w-[100%]'>{arrayCategory}</div>
 

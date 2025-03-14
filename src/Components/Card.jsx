@@ -4,15 +4,16 @@ import Button from './Button'
 
 
 const Card = ({image, name, price_old, price_new}) => {
-  return <div className='p-2 cursor-pointer rounded-sm shadow-md min-h-[300px] w-70 my-4 '>
+  
+  return <div className='w-[90%] m-auto my-2 px-auto rounded-xs shadow-md  p-1 cursor-pointer md:rounded-sm md:shadow-md md:min-h-[300px] md:w-70 md:my-4 '>
       <img src={image} 
-        className='w-[290px] h-[290px] w-xsm m-auto'
+        className=' md:w-[290px] md:h-[290px] md:w-xsm m-auto'
 
       />
-      <h5 className='w-full text-ellipsis line-clamp-1 text-[18px] text-gray-500 font-medium py-2'>{name}</h5>
+      <h5 className='text-[14px] line-clamp-1 text-ellipsis sm:w-full sm:text-[18px] text-gray-500 sm:font-medium py-2'>{name}</h5>
       
-      <div className='flex mb-3 items-start gap-[20%] text-xl text-gray-700'>
-        <div className='line-through line-red-700'>KES {price_new}</div>
+      <div className='flex items-start gap-[20%] text-xs text-gray-700 md:mb-3'>
+        <div className='line-through text-[red]'>KES {price_new}</div>
         <div className=''>KES {price_old}</div>
 
       </div>
