@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
+html{
+  scroll-behavior: smooth;
+}
+body{
+  overscroll-behavior: none;
 
+}
 
 /*:root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
